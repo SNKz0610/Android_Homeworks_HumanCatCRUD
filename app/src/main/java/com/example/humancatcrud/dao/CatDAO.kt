@@ -18,6 +18,6 @@ interface CatDAO {
     @Delete
     fun deleteCat(cat: Cat)
 
-    @Query("SELECT nameCat FROM cat WHERE owner_id = (SELECT idPerson FROM person)")
-    fun showCatsOwned(arrNameCats: List<String>, idOwner : Int)
+    @Query("SELECT nameCat FROM cat WHERE owner_id = (SELECT idPerson FROM person WHERE idPerson = owner_id)")
+    fun showCatsOwned( idOwner : Int) : List<String>
 }
